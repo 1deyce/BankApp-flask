@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<header class="bg-gray-800">
+  <a 
+  class=" button bg-red-800 hover:bg-white text-white font-bold py-2 px-2 border-b-2 border-red-700 hover:border-white rounded hover:text-black my-5 mt-5 mx-3"
+  style="box-shadow: none;"
+  href="/"
+  type="button"
+>
+  Back to home
+</a>
+</header>
+  <div class="bg-gray-800 flex items-center justify-center h-screen">
+    <div class="w-72 p-8 border-2 border-red-500 rounded-lg bg-red-500">
+      <h1 class="text-center text-black font-bold underline text-2xl mb-8">BANK OF HEROES</h1>
+      <form action="/login" method="POST">
+        <div class="mb-4">
+          <label class="block text-white text-sm mb-2" for="username">Username:</label>
+          <input class="w-full px-3 py-2 rounded border-2 border-black" type="text" id="username" name="username">
+        </div>
+        <div class="mb-4">
+          <label class="block text-white text-sm mb-2" for="pin">Pin:</label>
+          <input class="w-full px-3 py-2 rounded border-2 border-black" type="password" id="pin" name="pin">
+        </div>
+        <button class="w-full px-4 py-2 rounded bg-black text-white font-semibold" type="submit">Login</button>
+      </form>
+      <p class="text-center text-white text-sm mt-4">
+        <a class="text-white" href="/templates/forgotpin.html">Forgot Password?</a> | 
+        <a class="text-white" href="/templates/signup.html">Sign Up</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

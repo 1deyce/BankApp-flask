@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-gray-800">
+        <a 
+          class=" button bg-red-800 hover:bg-white text-white font-bold py-2 px-2 border-b-2 border-red-700 hover:border-white rounded hover:text-black my-5 mt-5 mx-3"
+          style="box-shadow: none;"
+          href="/"
+          type="button"
+        >
+          Back to home
+        </a>
+    </header>
+  <div class="bg-gray-800 flex items-center justify-center h-screen">
+    <div class="w-72 p-8 border-2 border-gray-700 rounded-lg bg-black">
+      <h1 class="text-center text-white text-2xl mb-8 font-bold underline">TRANSFER</h1>
+      <form method="POST" action="/transfer">
+        <div class="mb-4">
+          <label class="block text-sm text-white mb-2 text-center" for="account-number">Receiver's Account Number:</label>
+          <input class="w-full px-3 py-2 rounded border border-gray-400" type="text" id="account-number" name="account-number" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm text-white mb-2 text-center" for="amount">Amount:</label>
+          <input class="w-full px-3 py-2 rounded border border-gray-400" type="number" id="amount" name="amount" required>
+        </div>
+        <button class="w-full px-4 py-2 rounded bg-red-800 text-white font-semibold" type="submit">Transfer</button>
+      </form>
+      <div class="text-center text-white text-lg mt-4">
+        Your current balance is: <span id="currentBalance">{{currentBalance}}</span>
+      </div>
+      <h2 class="text-center text-white mt-8 mb-4 font-bold underline cursor-pointer">Previous Transactions</h2>
+      <ul class="text-white">
+            {% for transaction in transactions %}
+        <li class="items-center ml-4">{{ transaction }}</li><br><br>
+            {% endfor %}
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
