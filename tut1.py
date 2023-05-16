@@ -26,7 +26,8 @@ transactions = []
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    cb = session.get("current_balance")
+    return render_template("index.html", currentBalance=cb)
 
 
 @app.route("/templates/signup.html", methods=["GET"])
@@ -36,9 +37,9 @@ def signup():
 
 @app.route("/", methods=["POST"])
 def process_signup():
-    global name  # username
-    global pin  # password
-    global cb  # current balance
+    global name
+    global pin
+    global cb
 
     name = request.form["username"]
     pin = request.form["pin"]
@@ -46,6 +47,10 @@ def process_signup():
     if len(pin) == 6:
         pin = pin
         cb = 0  # Set initial current balance
+        session["current_balance"] = cb  # Store current balance in the session
+        session[
+            "transactions"
+        ] = []  # Initialize an empty transaction list for the user
         print(f"Thank you {name}, your account has been successfully created.")
         return render_template("login.html")
     else:
@@ -62,14 +67,19 @@ def process_login():
     name1 = request.form["username"]
     pin1 = request.form["pin"]
 
+    if "name" not in globals():
+        # Redirect the user to the signup page if the name is not defined
+        return redirect(url_for("signup"))
+
     if name1 != name or pin1 != pin:
         return "Your username or pin does not match, please try again."
     elif len(pin1) != 6:
         return "Please enter a 6-character pin."
     else:
         username = name1
-        session["username"] = username  # Store the logged-in user's name in the session
-        return redirect("/")
+        session["username"] = username
+        cb = session.get("current_balance")  # Retrieve current balance from the session
+        return render_template("index.html", currentBalance=cb)
 
 
 @app.route("/logout")
@@ -83,7 +93,8 @@ def logout():
 
 @app.route("/templates/deposit.html", methods=["GET"])
 def deposit():
-    return render_template("deposit.html")
+    cb = session.get("current_balance")
+    return render_template("deposit.html", curreentBalance=cb)
 
 
 @app.route("/deposit", methods=["POST", "GET"])
@@ -97,6 +108,9 @@ def process_deposit():
         d = amount
         cb += d
         save_cb(cb)
+
+        # Update the current balance in the session
+        session["current_balance"] = cb
 
         # Return a JSON response with the updated balance
         response = {"currentBalance": cb}
@@ -115,6 +129,7 @@ def save_cb(balance):
     # Save the updated balance to the global variable
     global cb
     cb = balance
+    session["current_balance"] = cb
 
 
 @app.route("/templates/withdraw.html", methods=["GET"])
@@ -127,24 +142,22 @@ def withdraw():
 def process_withdraw():
     amount = float(request.form.get("amount"))  # Retrieve the amount from the form data
     try:
-        # Perform the withdrawal logic here
-        # ...
-        # Retrieve the current balance from your data source
-        cb = get_cb()  # Replace this with your logic to retrieve the current balance
-
+        cb = get_cb()
         if amount > cb:
-            # Insufficient funds for withdrawal
             return (
-                jsonify({"error": "Insufficient funds"}),
+                jsonify(
+                    {"error": "Insufficient funds"}
+                ),  # Insufficient funds for withdrawal
                 400,
             )
-
-        # Update the balance after withdrawal
         cb -= amount
-        save_cb(cb)
+        save_cb(cb)  # Update the balance after withdrawal
 
-        # Return a JSON response with the updated balance
-        response = {"currentBalance": cb}
+        session["current_balance"] = cb  # Update the current balance in the session
+
+        response = {
+            "currentBalance": cb
+        }  # Return a JSON response with the updated balance
         return jsonify(response)
     except Exception as e:
         # Return an error response if any exception occurs
@@ -180,7 +193,7 @@ def transfer():
         )  # Redirect to the login page if the user is not logged in
 
     # Retrieve the current balance from the session or set it to 0 if not present
-    cb = session.get("current_balance", 0)
+    cb = session.get("current_balance")
 
     # Retrieve the user's transaction history from the session or set it to an empty list if not present
     transactions = session.get("transactions", [])
@@ -198,7 +211,7 @@ def transfer_amount():
         )  # Redirect to the login page if the user is not logged in
 
     # Retrieve the current balance from the session or set it to 0 if not present
-    cb = session.get("currentBalance", 0)
+    cb = session.get("current_balance")
 
     # Retrieve the user's transaction history from the session or set it to an empty list if not present
     transactions = session.get("transactions", [])

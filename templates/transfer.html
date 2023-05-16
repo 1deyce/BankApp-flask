@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transfer</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .scrollable-list {
+            max-height: 200px; /* Set a fixed height for the list container */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            margin-left: 5px;
+        }
+    </style>
 </head>
 <body>
     <header class="bg-gray-800">
@@ -35,8 +42,8 @@
       <div class="text-center text-white text-lg mt-4">
         Your current balance is: <span id="currentBalance">{{currentBalance}}</span>
       </div>
-      <h2 class="text-center text-white mt-8 mb-4 font-bold underline cursor-pointer">Previous Transactions</h2>
-      <ul class="text-white">
+      <h2 class="text-center text-red-800 mt-8 mb-4 font-bold underline cursor-pointer">TRANSFERS</h2>
+      <ul class="text-white scrollable-list">
             {% for transaction in transactions %}
         <li class="items-center ml-4">{{ transaction }}</li><br><br>
             {% endfor %}
