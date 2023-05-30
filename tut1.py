@@ -57,7 +57,7 @@ def process_signup():
         return "The pin has to be 6-digits, please go back and try again."
 
 
-@app.route("/templates/login.html", methods=["GET"])
+@app.route("/login", methods=["GET"])
 def login():
     return render_template("login.html")
 
