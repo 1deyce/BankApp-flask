@@ -18,7 +18,7 @@ Follow these steps to set up and run the Flask app:
 
 1. Clone the repository:
    `````shell
-   git clone https://github.com/1deyce/BankApp-flask 
+   git clone https://github.com/1deyce/BankApp-flask.git 
    ```
 
 2. Navigate to the project directory:
