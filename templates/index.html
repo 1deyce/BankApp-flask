@@ -1,75 +1,3 @@
-<!--DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <title>Heroes Bank</title>
-</head>
-<body>
-    <nav class="justify-items-center bg-black top-0 h-20 flex justify-between items-center">
-        <div>
-            <a href="/">
-                <img src="/static/images/bankNew.svg" alt="Logo" class="h-32 w-32 ml-5">
-            </a>            
-        </div>
-        <div class="flex justify-center items-center">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="justify-center" id="navbarNav">
-            <ul class="navbar-nav justify-between">
-                <li class="nav-item flex justify-center">
-                <a 
-                    class="text-white nav-link mr-4 hover:text-red-800 font-thin hover:font-bold" 
-                    href="/templates/deposit.html">Deposit
-                </a>
-                </li>
-                <li class="nav-item flex justify-center">
-                <a 
-                    class="text-white nav-link mr-4 hover:text-red-800 font-thin hover:font-bold" 
-                    href="/templates/withdraw.html">Withdraw
-                </a>
-                <a 
-                    class="text-white nav-link mr-4 hover:text-red-800 font-thin hover:font-bold" 
-                    href="/templates/transfer.html">Transfer
-                </a>
-            </ul>
-            </div>
-        </div>
-        <div class="relative">
-            {% if 'username' in session %}
-              <span class="text-red-800 font-medium mr-5 cursor-pointer hover:font-bold">{{ session['username'] }}</span>
-              <a class="button bg-red-800 hover:bg-white text-white font-bold py-2 px-2 border-b-2 border-red-700 hover:border-white rounded hover:text-black mr-5" style="box-shadow: none;" href="/logout">Sign Out</a>
-            {% else %}
-              <a class="button bg-red-800 hover:bg-white text-white font-bold py-2 px-2 border-b-2 border-red-700 hover:border-white rounded hover:text-black mr-5" style="box-shadow: none;" href="/templates/login.html">Log In</a>
-              <a class="button bg-red-800 hover:bg-white text-white font-bold py-2 px-2 border-b-2 border-red-700 hover:border-white rounded hover:text-black mr-5" style="box-shadow: none;" href="/templates/signup.html">Sign Up</a>
-            {% endif %}
-          </div>          
-    </nav>
-    <section class="bg-gray-700 items-center justify-center">
-        <header class="bg-white py-8 px-6">
-            <div class="container mx-auto translate-x-1\/2">
-                <h2 class="text-3xl font-bold text-gray-800">Welcome to our Banking App</h2>
-                <p class="mt-2 text-gray-600">Your trusted financial partner.</p>
-            </div>
-        </header>
-
-    <section class="justify-center items-center py-12 px-12">
-        <div class="container mx-auto justify-center">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="align-middle bg-black rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-white text-center">Online Banking</h3>
-                    <p class="mt-4 text-gray-600">Access your accounts, deposit & withdraw funds, pay bills, and more with our secure online banking platform.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</section>
-</body>
-</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,7 +53,11 @@
   <nav class="bg-black top-0 h-20 flex justify-between items-center">
     <div>
       <a href="/">
-        <img src="/static/images/bankNew.svg" alt="Logo" class="h-32 w-32 ml-5">
+        <img 
+          src="/static/images/bankNew.svg" 
+          alt="Logo" 
+          class="h-32 w-32 ml-5"
+        >
       </a>
     </div>
     <div class="flex items-center">
