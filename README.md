@@ -1,11 +1,9 @@
 # BankApp-flask
 Python, Flask, HTML.
 
-Certainly! Here's a more comprehensive example of a README for a Flask app:
-
 # Flask App README
 
-This repository contains a Flask web application that allows users to [describe the main functionality or purpose of your Flask app].
+This repository contains a Flask web application that functions as a basic banking app.
 
 ## Prerequisites
 
@@ -13,7 +11,6 @@ Before running the Flask app, ensure you have the following prerequisites instal
 
 - Python 3.7 or higher
 - Flask 2.0.1 or higher
-- [Any other dependencies]
 
 ## Installation
 
@@ -21,12 +18,12 @@ Follow these steps to set up and run the Flask app:
 
 1. Clone the repository:
    `````shell
-   git clone [repository URL]
+   git clone https://github.com/1deyce/BankApp-flask 
    ```
 
 2. Navigate to the project directory:
    ````shell
-   cd [project directory]
+   cd BankApp-flask
    ```
 
 3. Create and activate a virtual environment (optional, but recommended):
