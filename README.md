@@ -56,27 +56,3 @@ Follow these steps to set up and run the Flask app:
    ```
 
 7. Open a web browser and go to `http://localhost:5000` to access the Flask app.
-
-## Usage
-
-[Provide instructions on how to use your Flask app, including any necessary steps or input required.]
-
-[You can also include screenshots or GIFs to demonstrate the usage if applicable.]
-
-## Features
-
-- [List the main features or functionalities of your Flask app.]
-
-## Contributing
-
-[Explain how others can contribute to your Flask app if applicable.]
-
-## License
-
-[Specify the license under which your Flask app is distributed.]
-
-## Contact
-
-[Provide your contact information or any relevant links for users to reach out to you.]
-
-Feel free to update and customize this README template to fit the specific details and requirements of your Flask app.
